@@ -3798,9 +3798,7 @@ reply("Error link!")
 }
 break
 
-case 'music': case 'play': case 'song': case 'ytplay': {
-   if (isBan) return reply(mess.ban)	 			
-if (iscase 'play': case 'song': case 'ytplay': {
+case 'play': case 'song': case 'ytplay': {
 		if (isBan) return reply(mess.banned)	 			
  		if (isBanChat) return reply(mess.bangc)
                 if (!text) return reply(`Example : ${prefix + command} Stay`)
