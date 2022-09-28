@@ -1855,10 +1855,11 @@ if (isBanChat) return reply(mess.banChat)
                 case 'command': {
                 	   if (isBan) return reply(mess.ban)
 	if (isBanChat) return reply(mess.banChat)
+        Miku.sendMessage(from, { react: { text: `${global.reactmoji}`, key: m.key }})
 let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObject({
                 listMessage :{
                     title: `Aww my darling ${pushname} you need help? 🥺❤️`,
-                    description: `╭╼━━━᚜ 𝓐𝓷𝔂𝓪 𝓱𝔂 𝓟𝓲𝓴𝓪 ᚛━━━╾╮
+                    description: `\n╭╼━━━᚜ 𝓐𝓷𝔂𝓪 𝓱𝔂 𝓟𝓲𝓴𝓪 ᚛━━━╾╮
 │                                                 ❒
 🔥 *My prefix*       : ( - )
 ❤️ *My name*       : ${global.BotName}
@@ -1870,7 +1871,7 @@ let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObje
 🦊 *Owner num.*  : http://wa.me//${global.OwnerNumber}
 🍓 *Group name*  : ${groupMetadata.subject}
 │                                                 ❒
-╰╼━━━━━━━━━━━━━━━━╾╯\n\n`,
+╰╼━━━━━━━━━━━━━━━━╾╯\n\n_Tap here for *full command*_ 🐤👇\nㅤ`,
                     buttonText: "🦋⃟✮͢ 𝑻𝒂𝒑 𝒉𝒆𝒓𝒆 ✮⃝❤️" ,
                     footerText: `${global.BotName}`,
                     listType: "SINGLE_SELECT",
