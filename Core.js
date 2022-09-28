@@ -242,6 +242,50 @@ for (let nexus of videox){
 	    Miku.sendMessage(m.chat, { video: result }, { quoted: m })
 	}
         } 	
+
+// Autosticker gc
+        if (isAutoSticker) {
+            if (/image/.test(mime) && !/webp/.test(mime)) {
+                let mediac = await quoted.download()
+                await Miku.sendImageAsSticker(from, mediac, m, { packname: global.packname, author: global.author })
+                console.log(`Auto sticker detected`)
+            } else if (/video/.test(mime)) {
+                if ((quoted.msg || quoted).seconds > 11) return
+                let mediac = await quoted.download()
+                await Miku.sendVideoAsSticker(from, mediac, m, { packname: global.packname, author: global.author })
+            }
+        }
+        //Autosticker pc
+                if (isAutoStick) {
+            if (/image/.test(mime) && !/webp/.test(mime)) {
+                let mediac = await quoted.download()
+                await Miku.sendImageAsSticker(from, mediac, m, { packname: global.packname, author: global.author })
+                console.log(`Auto sticker detected`)
+            } else if (/video/.test(mime)) {
+                if ((quoted.msg || quoted).seconds > 11) return
+                let mediac = await quoted.download()
+                await Miku.sendVideoAsSticker(from, mediac, m, { packname: global.packname, author: global.author })
+            }
+        }
+function randomNomor(angka){
+            return Math.floor(Math.random() * angka) + 1
+            }
+            
+		
+if (m.message) {
+addBalance(m.sender, randomNomor(574), balance)
+console.log(chalk.black(chalk.bgWhite('[ MESSAGE ]')), chalk.black(chalk.bgGreen(new Date)), chalk.black(chalk.bgBlue(budy || m.mtype)) + '\n' + chalk.magenta('=> From'), chalk.green(pushname), chalk.yellow(m.sender) + '\n' + chalk.blueBright('=> In'), chalk.green(m.isGroup ? pushname : 'Private Chat', m.chat))
+        }
+//antispam or auto react
+//if (m.message && msgFilter.isFiltered(from)) {
+//console.log(`${global.dogeemoji}[SPAM]`, color(moment(m.messageTimestamp * 1000).format('DD/MM/YYYY HH:mm:ss'), 'yellow'), color(`${command} [${args.length}]`), 'from', color(m.pushName))
+//return Miku.sendMessage(from, { react: { text: `${global.themeemoji}`, key: m.key }})
+//}
+        if (isCmd && !isUser){
+			pendaftar.push(m.sender)
+			fs.writeFileSync('./storage/user/user.json', JSON.stringify(pendaftar))
+        }
+
 /////////////////////////////////////////
 /////////// -  DM chatbot (Delete this part to turn off DM Chat Bot) - //////////////////
 
@@ -795,20 +839,20 @@ Miku.sendMessage(from, {text:`\`\`\`「 'wa.me' PM link Detected! 」\`\`\`\n\n@
   }
   }
 
-if (antiToxic)
-if (bad.includes(messagesD)) {
-tos = ['Hey, watch your mouth','Never been taught how to speak?','Stop being toxic my friend🤢','Dont be toxic🦄']
-sin =  tos[Math.floor(Math.random() * (tos.length))]
-reply(sin)
-if (m.text) {
-bvl = `\`\`\`「 Bad Word Detected 」\`\`\`\n\nYou are using bad word but you are an admin that's why i won't kick you😇`
-if (isAdmins) return reply(bvl)
-if (m.key.fromMe) return reply(bvl)
-if (isCreator) return reply(bvl)
-kice = m.sender
-await Miku.groupParticipantsUpdate(m.chat, [kice], 'remove')
-Miku.sendMessage(from, {text:`\`\`\`「 Bad Word Detected 」\`\`\`\n\n@${kice.split("@")[0]} was kicked because of using bad words in this group`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})}
-}
+  if (antiToxic)
+  if (bad.includes(messagesD)) {
+  tos = ['Hey, watch your mouth','Never been taught how to speak?','Stop being toxic my friend🤢','Dont be toxic🦄']
+  sin =  tos[Math.floor(Math.random() * (tos.length))]
+  reply(sin)
+  if (m.text) {
+  bvl = `\`\`\`「 Bad Word Detected 」\`\`\`\n\nYou are using bad word but you are an admin that's why i won't kick you😇`
+  if (isAdmins) return reply(bvl)
+  if (m.key.fromMe) return reply(bvl)
+  if (isCreator) return reply(bvl)
+  kice = m.sender
+  await Miku.groupParticipantsUpdate(m.chat, [kice], 'remove')
+  Miku.sendMessage(from, {text:`\`\`\`「 Bad Word Detected 」\`\`\`\n\n@${kice.split("@")[0]} was kicked because of using bad words in this group`, contextInfo:{mentionedJid:[kice]}}, {quoted:m})}
+  }
 
 
     if (AntiLink) {
@@ -1415,13 +1459,20 @@ function pickRandom(list) {
 return list[Math.floor(list.length * Math.random())]
 }
 
-           
+//react function
+const reactionMessage = {
+                    react: {
+                        text: args[0],
+                        key: { remoteJid: m.chat, fromMe: true, id: quoted.id }
+                    }
+                }           
 
 switch(command) {
 	
     case 'sc': case 'script': case 'sourcecode': {
         if (isBan) return reply(mess.banned)	 			
     if (isBanChat) return reply(mess.bangc)
+    Miku.sendMessage(from, { react: { text: `${global.reactmoji}`, key: m.key }})
     teks = `*${global.BotName}'s Script*\n\n*GitHub*: ${global.BotSourceCode}\n\nDont forget to follow me on *GitHub* and give a ⭐️ to my projects. `
     let buttons = [
     {buttonId: `-owner`, buttonText: {displayText: `❤️ Owner ❤️`}, type: 1},
@@ -2523,12 +2574,12 @@ replay('Success in turning off antivirus this group')
   }
   break
 
-case 'antitoxic': {
-   if (isBan) return reply(mess.ban)	 			
-if (isBanChat) return reply(mess.banChat)
-if (!m.isGroup) return replay(mess.group)
-if (!isBotAdmins) return replay(mess.botAdmin)
-if (!isAdmins && !isCreator) return replay(mess.admin)
+case'antitoxic': {
+if (isBan) return reply(mess.banned)	 			
+if (isBanChat) return reply(mess.bangc)
+if (!m.isGroup) return replay(mess.grouponly)
+if (!isBotAdmins) return replay(mess.botadmin)
+if (!isAdmins && !isCreator) return replay(mess.useradmin)
 if (args[0] === "on") {
 if (antiToxic) return replay('Already activated')
 nttoxic.push(from)
@@ -2547,10 +2598,10 @@ nttoxic.splice(off, 1)
 replay('Success in turning off antitoxic in this group')
 } else {
   let buttonsnttoxci = [
-  { buttonId: `${command} on`, buttonText: { displayText: 'On' }, type: 1 },
-  { buttonId: `${command} off`, buttonText: { displayText: 'Off' }, type: 1 }
-  ]
-  await Miku.sendButtonText(m.chat, buttonsnttoxci, `Please click the button below\n\nOn to enable\nOff to disable`, `${global.botname}`, m)
+  { buttonId: `${prefix}antitoxic on`, buttonText: { displayText: 'On' }, type: 1 },
+  { buttonId: `${prefix}antitoxic off`, buttonText: { displayText: 'Off' }, type: 1 }
+   ]
+  await Miku.sendButtonText(m.chat, buttonsnttoxci, `Please click the button below\n\nOn to enable\nOff to disable`, `${global.BotName}`, m)
   }
   }
   break
@@ -5918,6 +5969,27 @@ let buttons = [
 await Miku.sendButtonText(m.chat, buttons, jawab, Miku.user.name, m, {mentions: menst})
 }
 break
+
+case 'antiviewonce': case 'antionce':
+	            	            	if (isBan) return reply(mess.ban)
+	if (isBanChat) return reply(mess.banChat)
+        if (!m.key.fromMe && !isCreator) return reply(mess.owner)
+        if (args[0] === "on") {
+      	if (global.db.data.chats[m.chat].antionce) return reply(`Already activated`)
+        global.db.data.chats[m.chat].antionce = true
+        reply(`${command} Successfully Activated !`)
+        } else if (args[0] === "off") {
+        	if (!global.db.data.chats[m.chat].antionce) return reply(`Already deactivated`)
+        global.db.data.chats[m.chat].antionce = false
+        reply(`${command} Successfully Deactivated !`)
+} else {
+  let buttonsntilink = [
+  { buttonId: `${command} on`, buttonText: { displayText: 'On' }, type: 1 },
+  { buttonId: `${command} off`, buttonText: { displayText: 'Off' }, type: 1 }
+  ]
+  await Miku.sendButtonText(m.chat, buttonsntilink, `Please click the button below\n\nOn to enable\nOff to disable`, `${global.botname}`, m)
+  }
+  break
 
 case 'candy': case 'christmas': case '3dchristmas': case 'sparklechristmas':
 case 'deepsea': case 'scifi': case 'rainbow': case 'waterpipe': case 'spooky': 
