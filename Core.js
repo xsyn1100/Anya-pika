@@ -2018,7 +2018,6 @@ let template = await generateWAMessageFromContent(m.chat, proto.Message.fromObje
           listType: 1
                 }
             }), {})
-            Miku.sendMessage(from, { react: { text: `${global.reactmoji}`, key: m.key }})
             Miku.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
             break
@@ -5269,7 +5268,8 @@ break
 case 'allmenu': case 'help':{
     if (isBan) return reply(mess.banned)	 			
     if (isBanChat) return reply(mess.bangc)
-      
+    Miku.sendMessage(from, { react: { text: `${global.reactmoji}`, key: m.key }})
+  
  const helpmenu = `Hey *${pushname}* Darling❤️,
 
 ╭╼━᚜ 𝓐𝓷𝔂𝓪 𝓱𝔂 𝓟𝓲𝓴𝓪 ᚛━╾╮
