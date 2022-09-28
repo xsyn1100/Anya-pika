@@ -5794,6 +5794,119 @@ case 'antilinkmenu':
                 }
 break
 
+case 'searchmenu':
+    if(isCmd){
+    if (isBan) return reply(mess.banned)	 			
+    if (isBanChat) return reply(mess.bangc)
+
+      mikupic ='https://wallpapercave.com/wp/wp10524580.jpg'
+    
+        
+ const txt = `╭╼━᚜ 𝓐𝓷𝔂𝓪 𝓱𝔂 𝓟𝓲𝓴𝓪 ᚛━╾╮
+│                                      ❒
+🔥 *My prefix*       : ( - )
+❤️ *My name*       : ${global.BotName}
+🥵 *User name*    : ${pushname}
+😻 *Bot speed*     : ${latensie.toFixed(4)} ms
+🎃 *Owner name* : ${global.OwnerName}
+🍓 *Group name*  : ${groupMetadata.subject}
+│                                      ❒
+╰╼━━━━━━━━━━━━╾╯
+
+╭╼━᚜ 𝓐𝓷𝔂𝓪 𝓱𝔂 𝓟𝓲𝓴𝓪 ᚛━╾╮
+╽                                     🎃
+┃
+❒✗ -play
+❒✗ -song
+❒✗ -yts
+❒✗ -getmusic
+❒✗ -getvideo
+❒✗ -lyrics
+❒✗ -google
+❒✗ -gimage
+❒✗ -pinterest
+❒✗ -image
+❒✗ -movie
+❒✗ -wallpaper
+❒✗ -searchgc
+❒✗ -happymod
+❒✗ -wikimedia
+❒✗ -ringtone
+❒✗ -anime
+❒✗ -animestory
+❒✗ -manga
+❒✗ -ringtone  
+╿                                     
+╰╼⟨ ${pushname} ⟩╾⟢ `
+     
+         let butRun = [
+                {buttonId: `-owner`, buttonText: {displayText: '❤️ 𝘖𝘸𝘯𝘦𝘳 ❤️'}, type: 1},
+                {buttonId: `-funmenu`, buttonText: {displayText: 'Fun menu 😂'}, type: 1},      
+                {buttonId: `-menu`, buttonText: {displayText: '🍓 𝘔𝘦𝘯𝘶 🍓'}, type: 1}
+                ]
+                let buttonMessage = {
+                    video:fs.readFileSync('./system/Search.mp4'),gifPlayback:true,
+                    caption: txt,
+                    footer: `${global.BotName}`,
+                    buttons: butRun,
+                    headerType: 4
+                }
+            Miku.sendMessage(m.chat,buttonMessage,{quoted:m})
+                }
+break
+
+case 'convertermenu':
+    if(isCmd){
+    if (isBan) return reply(mess.banned)	 			
+    if (isBanChat) return reply(mess.bangc)
+
+      mikupic ='https://wallpapercave.com/wp/wp10524580.jpg'
+    
+        
+ const txt = `╭╼━᚜ 𝓐𝓷𝔂𝓪 𝓱𝔂 𝓟𝓲𝓴𝓪 ᚛━╾╮
+│                                      ❒
+🔥 *My prefix*       : ( - )
+❤️ *My name*       : ${global.BotName}
+🥵 *User name*    : ${pushname}
+😻 *Bot speed*     : ${latensie.toFixed(4)} ms
+🎃 *Owner name* : ${global.OwnerName}
+🍓 *Group name*  : ${groupMetadata.subject}
+│                                      ❒
+╰╼━━━━━━━━━━━━╾╯
+
+╭╼━᚜ 𝓐𝓷𝔂𝓪 𝓱𝔂 𝓟𝓲𝓴𝓪 ᚛━╾╮
+╽                                     🎃
+┃
+❒✗ -sticker
+❒✗ -toimg
+❒✗ -tovideo
+❒✗ -togif
+❒✗ -steal
+❒✗ -stickermeme
+❒✗ -emoji
+❒✗ -emojimix
+❒✗ -tourl
+❒✗ -tomp3
+❒✗ -toaudio
+╿                                     
+╰╼⟨ ${pushname} ⟩╾⟢ `
+     
+         let butRun = [
+                {buttonId: `-owner`, buttonText: {displayText: '❤️ 𝘖𝘸𝘯𝘦𝘳 ❤️'}, type: 1},
+                {buttonId: `-funmenu`, buttonText: {displayText: 'Fun menu 😂'}, type: 1},      
+                {buttonId: `-menu`, buttonText: {displayText: '🍓 𝘔𝘦𝘯𝘶 🍓'}, type: 1}
+                ]
+                let buttonMessage = {
+                    video:fs.readFileSync('./system/Convert.mp4'),gifPlayback:true,
+                    caption: txt,
+                    footer: `${global.BotName}`,
+                    buttons: butRun,
+                    headerType: 4
+                }
+            Miku.sendMessage(m.chat,buttonMessage,{quoted:m})
+                }
+break
+
 /*case '':
     if (isBan) return reply(mess.banned)	 			
     if (isBanChat) return reply(mess.bangc)
