@@ -5268,7 +5268,7 @@ break
 case 'allmenu': case 'help':{
     if (isBan) return reply(mess.banned)	 			
     if (isBanChat) return reply(mess.bangc)
-    Miku.sendMessage(from, { react: { text: `${global.reactmoji}`, key: m.key }})
+    Miku.sendMessage(from, { react: { text: `${global.reactmoji1}`, key: m.key }})
   
  const helpmenu = `Hey *${pushname}* Darling❤️,
 
