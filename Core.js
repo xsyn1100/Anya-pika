@@ -2092,6 +2092,31 @@ case 'coffee': case 'kopi': {
                 }
                 break
 
+
+    case 'autoreply': {
+   if (isBan) return reply(mess.ban)	 			
+if (isBanChat) return reply(mess.banChat)
+if (!m.isGroup) return replay(mess.group)
+if (!isBotAdmins) return replay(mess.botAdmin)
+if (!isAdmins && !isCreator) return replay(mess.admin)
+if (args[0] === "on") {
+if (Autoreply) return replay('Already activated')
+autorep.push(from)
+replay('Success in turning on the autoreply in this group')
+} else if (args[0] === "off") {
+if (!Autoreply) return replay('Already deactivated')
+let off = autorep.indexOf(from)
+autorep.splice(off, 1)
+replay('Success in turning off autoreply in this group')
+} else {
+  let buttonswlcm = [
+  { buttonId: `${command} on`, buttonText: { displayText: 'On' }, type: 1 },
+  { buttonId: `${command} off`, buttonText: { displayText: 'Off' }, type: 1 }
+  ]
+  await Miku.sendButtonText(m.chat, buttonswlcm, `Please click the button below\n\nOn to enable\nOff to disable`, `${global.botname}`, m)
+  }
+  }
+  break
  
 
 case 'emojimix': {
